@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SIGIL — the signet ring, recompiled</title>
 <meta name="description" content="SIGIL is a ring with a live OLED display. Digital rain on your finger. No health sensors. No subscription. Fully reprogrammable.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<meta property="og:title" content="SIGIL — the signet ring, recompiled">
+<meta property="og:description" content="A ring with a live OLED display. Digital rain on your finger. No sensors, no subscription.">
+<meta property="og:image" content="https://sigilring.com/og-image.jpg">
+<meta property="og:url" content="https://sigilring.com">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Michroma&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
@@ -316,7 +323,7 @@ footer .logo{display:block;margin-bottom:1rem;font-size:.85rem}
 <footer>
   <span class="logo">SIGIL</span>
   the signet ring, recompiled.<br><br>
-  © 2026 SIGIL INDUSTRIES — <a href="#">instagram</a> · <a href="#">tiktok</a> · <a href="#">x</a> · <a href="#">discord</a>
+  © 2026 SIGIL RING — <a href="https://www.instagram.com/sigil.ring/" target="_blank" rel="noopener">instagram</a> · <a href="https://www.tiktok.com/@sigil.ring" target="_blank" rel="noopener">tiktok</a>
 </footer>
 
 <script>
@@ -375,7 +382,13 @@ document.getElementById('joinbtn').addEventListener('click',()=>{
   const em=document.getElementById('email').value.trim();
   const msg=document.getElementById('cap-msg');
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){msg.textContent='> invalid address. try again.';msg.style.color='var(--amber)';return}
-  // fetch('YOUR_ENDPOINT',{method:'POST',body:JSON.stringify({email:em})})
+  // ↓↓↓ replace YOUR_BUTTONDOWN_USERNAME with your actual Buttondown username ↓↓↓
+  fetch('https://buttondown.com/api/emails/embed-subscribe/YOUR_BUTTONDOWN_USERNAME',{
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:'email='+encodeURIComponent(em),
+    mode:'no-cors'
+  }).catch(()=>{});
   msg.style.color='var(--rain)';
   msg.textContent='> access granted. welcome to the rain.';
   document.getElementById('email').value='';
