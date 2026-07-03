@@ -383,7 +383,7 @@ document.getElementById('joinbtn').addEventListener('click',()=>{
   const msg=document.getElementById('cap-msg');
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){msg.textContent='> invalid address. try again.';msg.style.color='var(--amber)';return}
   // ↓↓↓ replace YOUR_BUTTONDOWN_USERNAME with your actual Buttondown username ↓↓↓
-  fetch('https://buttondown.com/api/emails/embed-subscribe/YOUR_BUTTONDOWN_USERNAME',{
+  fetch('https://buttondown.com/api/emails/embed-subscribe/sigil.ring',{
     method:'POST',
     headers:{'Content-Type':'application/x-www-form-urlencoded'},
     body:'email='+encodeURIComponent(em),
